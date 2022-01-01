@@ -1,0 +1,374 @@
+{
+  "bfamcv16_segment270_neutral": {
+    "wav": "../../../data/train/bfamcv16_segment270_neutral.wav",
+    "length": 3.856,
+    "spk_id": "bfamcv16",
+    "sentiment": "neutral"
+  },
+  "bfammn08_segment230_neutral": {
+    "wav": "../../../data/train/bfammn08_segment230_neutral.wav",
+    "length": 3.032,
+    "spk_id": "bfammn08",
+    "sentiment": "neutral"
+  },
+  "bpubmn12_segment104_neutral": {
+    "wav": "../../../data/train/bpubmn12_segment104_neutral.wav",
+    "length": 6.626,
+    "spk_id": "bpubmn12",
+    "sentiment": "neutral"
+  },
+  "bfamcv19_segment278_neutral": {
+    "wav": "../../../data/train/bfamcv19_segment278_neutral.wav",
+    "length": 7.445,
+    "spk_id": "bfamcv19",
+    "sentiment": "neutral"
+  },
+  "bfammn17_segment156_neutral": {
+    "wav": "../../../data/train/bfammn17_segment156_neutral.wav",
+    "length": 3.187,
+    "spk_id": "bfammn17",
+    "sentiment": "neutral"
+  },
+  "bfamcv26_segment284_neutral": {
+    "wav": "../../../data/train/bfamcv26_segment284_neutral.wav",
+    "length": 3.979,
+    "spk_id": "bfamcv26",
+    "sentiment": "neutral"
+  },
+  "bpubdl09_segment157_neutral": {
+    "wav": "../../../data/train/bpubdl09_segment157_neutral.wav",
+    "length": 2.832,
+    "spk_id": "bpubdl09",
+    "sentiment": "neutral"
+  },
+  "bpubcv01_segment137_neutral": {
+    "wav": "../../../data/train/bpubcv01_segment137_neutral.wav",
+    "length": 2.706,
+    "spk_id": "bpubcv01",
+    "sentiment": "neutral"
+  },
+  "bfamcv22_segment273_non-neutral-female": {
+    "wav": "../../../data/train/bfamcv22_segment273_non-neutral-female.wav",
+    "length": 2.087,
+    "spk_id": "bfamcv22",
+    "sentiment": "non-neutral-female"
+  },
+  "bpubdl10_segment202_neutral": {
+    "wav": "../../../data/train/bpubdl10_segment202_neutral.wav",
+    "length": 4.031,
+    "spk_id": "bpubdl10",
+    "sentiment": "neutral"
+  },
+  "bfammn17_segment154_non-neutral-female": {
+    "wav": "../../../data/train/bfammn17_segment154_non-neutral-female.wav",
+    "length": 3.561,
+    "spk_id": "bfammn17",
+    "sentiment": "non-neutral-female"
+  },
+  "bfammn10_segment187_neutral": {
+    "wav": "../../../data/train/bfammn10_segment187_neutral.wav",
+    "length": 5.505,
+    "spk_id": "bfammn10",
+    "sentiment": "neutral"
+  },
+  "bfamcv01_segment163_neutral": {
+    "wav": "../../../data/train/bfamcv01_segment163_neutral.wav",
+    "length": 5.791,
+    "spk_id": "bfamcv01",
+    "sentiment": "neutral"
+  },
+  "bfamcv21_segment208_neutral": {
+    "wav": "../../../data/train/bfamcv21_segment208_neutral.wav",
+    "length": 2.024,
+    "spk_id": "bfamcv21",
+    "sentiment": "neutral"
+  },
+  "bfammn17_segment139_neutral": {
+    "wav": "../../../data/train/bfammn17_segment139_neutral.wav",
+    "length": 2.562,
+    "spk_id": "bfammn17",
+    "sentiment": "neutral"
+  },
+  "bpubdl08_segment281_neutral": {
+    "wav": "../../../data/train/bpubdl08_segment281_neutral.wav",
+    "length": 4.225,
+    "spk_id": "bpubdl08",
+    "sentiment": "neutral"
+  },
+  "bfamcv27_segment254_neutral": {
+    "wav": "../../../data/train/bfamcv27_segment254_neutral.wav",
+    "length": 3.064,
+    "spk_id": "bfamcv27",
+    "sentiment": "neutral"
+  },
+  "bfammn26_segment93_neutral": {
+    "wav": "../../../data/train/bfammn26_segment93_neutral.wav",
+    "length": 6.325,
+    "spk_id": "bfammn26",
+    "sentiment": "neutral"
+  },
+  "bfammn16_segment110_neutral": {
+    "wav": "../../../data/train/bfammn16_segment110_neutral.wav",
+    "length": 4.648,
+    "spk_id": "bfammn16",
+    "sentiment": "neutral"
+  },
+  "bpubdl11_segment369_non-neutral-female": {
+    "wav": "../../../data/train/bpubdl11_segment369_non-neutral-female.wav",
+    "length": 2.917,
+    "spk_id": "bpubdl11",
+    "sentiment": "non-neutral-female"
+  },
+  "bfamcv26_segment283_neutral": {
+    "wav": "../../../data/train/bfamcv26_segment283_neutral.wav",
+    "length": 2.093,
+    "spk_id": "bfamcv26",
+    "sentiment": "neutral"
+  },
+  "bpubdl11_segment164_neutral": {
+    "wav": "../../../data/train/bpubdl11_segment164_neutral.wav",
+    "length": 2.517,
+    "spk_id": "bpubdl11",
+    "sentiment": "neutral"
+  },
+  "bpubcv04_segment203_neutral": {
+    "wav": "../../../data/train/bpubcv04_segment203_neutral.wav",
+    "length": 2.032,
+    "spk_id": "bpubcv04",
+    "sentiment": "neutral"
+  },
+  "bfamcv04_segment99_neutral": {
+    "wav": "../../../data/train/bfamcv04_segment99_neutral.wav",
+    "length": 2.3510625,
+    "spk_id": "bfamcv04",
+    "sentiment": "neutral"
+  },
+  "bpubdl02_segment233_neutral": {
+    "wav": "../../../data/train/bpubdl02_segment233_neutral.wav",
+    "length": 2.754,
+    "spk_id": "bpubdl02",
+    "sentiment": "neutral"
+  },
+  "bpubmn14_segment200_neutral": {
+    "wav": "../../../data/train/bpubmn14_segment200_neutral.wav",
+    "length": 2.172,
+    "spk_id": "bpubmn14",
+    "sentiment": "neutral"
+  },
+  "bfamdl15_segment173_neutral": {
+    "wav": "../../../data/train/bfamdl15_segment173_neutral.wav",
+    "length": 4.896,
+    "spk_id": "bfamdl15",
+    "sentiment": "neutral"
+  },
+  "bfamcv09_segment388_neutral": {
+    "wav": "../../../data/train/bfamcv09_segment388_neutral.wav",
+    "length": 11.666,
+    "spk_id": "bfamcv09",
+    "sentiment": "neutral"
+  },
+  "bpubmn04_segment154_neutral": {
+    "wav": "../../../data/train/bpubmn04_segment154_neutral.wav",
+    "length": 4.903,
+    "spk_id": "bpubmn04",
+    "sentiment": "neutral"
+  },
+  "bpubcv02_segment103_neutral": {
+    "wav": "../../../data/train/bpubcv02_segment103_neutral.wav",
+    "length": 3.899,
+    "spk_id": "bpubcv02",
+    "sentiment": "neutral"
+  },
+  "bfamdl26_segment124_neutral": {
+    "wav": "../../../data/train/bfamdl26_segment124_neutral.wav",
+    "length": 3.482,
+    "spk_id": "bfamdl26",
+    "sentiment": "neutral"
+  },
+  "bfammn10_segment272_neutral": {
+    "wav": "../../../data/train/bfammn10_segment272_neutral.wav",
+    "length": 8.297,
+    "spk_id": "bfammn10",
+    "sentiment": "neutral"
+  },
+  "bpubdl07_segment442_neutral": {
+    "wav": "../../../data/train/bpubdl07_segment442_neutral.wav",
+    "length": 2.116,
+    "spk_id": "bpubdl07",
+    "sentiment": "neutral"
+  },
+  "bpubmn14_segment83_neutral": {
+    "wav": "../../../data/train/bpubmn14_segment83_neutral.wav",
+    "length": 2.854,
+    "spk_id": "bpubmn14",
+    "sentiment": "neutral"
+  },
+  "bpubcv07_segment208_neutral": {
+    "wav": "../../../data/train/bpubcv07_segment208_neutral.wav",
+    "length": 5.528,
+    "spk_id": "bpubcv07",
+    "sentiment": "neutral"
+  },
+  "bfamcv26_segment268_neutral": {
+    "wav": "../../../data/train/bfamcv26_segment268_neutral.wav",
+    "length": 3.299,
+    "spk_id": "bfamcv26",
+    "sentiment": "neutral"
+  },
+  "bpubdl11_segment367_neutral": {
+    "wav": "../../../data/train/bpubdl11_segment367_neutral.wav",
+    "length": 2.186,
+    "spk_id": "bpubdl11",
+    "sentiment": "neutral"
+  },
+  "bpubcv04_segment214_neutral": {
+    "wav": "../../../data/train/bpubcv04_segment214_neutral.wav",
+    "length": 3.265,
+    "spk_id": "bpubcv04",
+    "sentiment": "neutral"
+  },
+  "bfamcv19_segment250_neutral": {
+    "wav": "../../../data/train/bfamcv19_segment250_neutral.wav",
+    "length": 3.084,
+    "spk_id": "bfamcv19",
+    "sentiment": "neutral"
+  },
+  "bpubdl01_segment233_neutral": {
+    "wav": "../../../data/train/bpubdl01_segment233_neutral.wav",
+    "length": 6.373,
+    "spk_id": "bpubdl01",
+    "sentiment": "neutral"
+  },
+  "bfammn17_segment108_neutral": {
+    "wav": "../../../data/train/bfammn17_segment108_neutral.wav",
+    "length": 3.666,
+    "spk_id": "bfammn17",
+    "sentiment": "neutral"
+  },
+  "bpubdl10_segment130_neutral": {
+    "wav": "../../../data/train/bpubdl10_segment130_neutral.wav",
+    "length": 2.812,
+    "spk_id": "bpubdl10",
+    "sentiment": "neutral"
+  },
+  "bfammn22_segment210_neutral": {
+    "wav": "../../../data/train/bfammn22_segment210_neutral.wav",
+    "length": 5.61,
+    "spk_id": "bfammn22",
+    "sentiment": "neutral"
+  },
+  "bfamcv02_segment200_non-neutral-female": {
+    "wav": "../../../data/train/bfamcv02_segment200_non-neutral-female.wav",
+    "length": 3.529,
+    "spk_id": "bfamcv02",
+    "sentiment": "non-neutral-female"
+  },
+  "bpubdl10_segment98_neutral": {
+    "wav": "../../../data/train/bpubdl10_segment98_neutral.wav",
+    "length": 2.825,
+    "spk_id": "bpubdl10",
+    "sentiment": "neutral"
+  },
+  "bfamdl26_segment382_neutral": {
+    "wav": "../../../data/train/bfamdl26_segment382_neutral.wav",
+    "length": 3.168,
+    "spk_id": "bfamdl26",
+    "sentiment": "neutral"
+  },
+  "bpubdl02_segment252_neutral": {
+    "wav": "../../../data/train/bpubdl02_segment252_neutral.wav",
+    "length": 4.038,
+    "spk_id": "bpubdl02",
+    "sentiment": "neutral"
+  },
+  "bfamdl26_segment375_non-neutral-female": {
+    "wav": "../../../data/train/bfamdl26_segment375_non-neutral-female.wav",
+    "length": 2.975,
+    "spk_id": "bfamdl26",
+    "sentiment": "non-neutral-female"
+  },
+  "bfammn10_segment213_neutral": {
+    "wav": "../../../data/train/bfammn10_segment213_neutral.wav",
+    "length": 3.239,
+    "spk_id": "bfammn10",
+    "sentiment": "neutral"
+  },
+  "bpubcv09_segment363_neutral": {
+    "wav": "../../../data/train/bpubcv09_segment363_neutral.wav",
+    "length": 2.06,
+    "spk_id": "bpubcv09",
+    "sentiment": "neutral"
+  },
+  "bpubdl07_segment819_neutral": {
+    "wav": "../../../data/train/bpubdl07_segment819_neutral.wav",
+    "length": 2.77,
+    "spk_id": "bpubdl07",
+    "sentiment": "neutral"
+  },
+  "bpubcv01_segment209_neutral": {
+    "wav": "../../../data/train/bpubcv01_segment209_neutral.wav",
+    "length": 2.189,
+    "spk_id": "bpubcv01",
+    "sentiment": "neutral"
+  },
+  "bpubdl08_segment252_neutral": {
+    "wav": "../../../data/train/bpubdl08_segment252_neutral.wav",
+    "length": 3.112,
+    "spk_id": "bpubdl08",
+    "sentiment": "neutral"
+  },
+  "bpubdl11_segment368_neutral": {
+    "wav": "../../../data/train/bpubdl11_segment368_neutral.wav",
+    "length": 3.254,
+    "spk_id": "bpubdl11",
+    "sentiment": "neutral"
+  },
+  "bfamcv02_segment296_neutral": {
+    "wav": "../../../data/train/bfamcv02_segment296_neutral.wav",
+    "length": 3.957,
+    "spk_id": "bfamcv02",
+    "sentiment": "neutral"
+  },
+  "bpubcv05_segment249_neutral": {
+    "wav": "../../../data/train/bpubcv05_segment249_neutral.wav",
+    "length": 4.668,
+    "spk_id": "bpubcv05",
+    "sentiment": "neutral"
+  },
+  "bfamdl09_segment421_neutral": {
+    "wav": "../../../data/train/bfamdl09_segment421_neutral.wav",
+    "length": 8.059,
+    "spk_id": "bfamdl09",
+    "sentiment": "neutral"
+  },
+  "bfammn22_segment162_neutral": {
+    "wav": "../../../data/train/bfammn22_segment162_neutral.wav",
+    "length": 12.093,
+    "spk_id": "bfammn22",
+    "sentiment": "neutral"
+  },
+  "bpubdl10_segment99_neutral": {
+    "wav": "../../../data/train/bpubdl10_segment99_neutral.wav",
+    "length": 3.514,
+    "spk_id": "bpubdl10",
+    "sentiment": "neutral"
+  },
+  "bpubcv06_segment154_non-neutral-female": {
+    "wav": "../../../data/train/bpubcv06_segment154_non-neutral-female.wav",
+    "length": 2.268,
+    "spk_id": "bpubcv06",
+    "sentiment": "non-neutral-female"
+  },
+  "bpubcv09_segment195_neutral": {
+    "wav": "../../../data/train/bpubcv09_segment195_neutral.wav",
+    "length": 2.402,
+    "spk_id": "bpubcv09",
+    "sentiment": "neutral"
+  },
+  "bfamcv29_segment255_neutral": {
+    "wav": "../../../data/train/bfamcv29_segment255_neutral.wav",
+    "length": 3.03,
+    "spk_id": "bfamcv29",
+    "sentiment": "neutral"
+  }
+}
