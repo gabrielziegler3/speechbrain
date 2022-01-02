@@ -61,17 +61,12 @@ def prepare_coraa(
         logger.info("Preparation completed in previous run, skipping.")
         return
 
-    # If the dataset doesn't exist yet, download it
-    train_folder = os.path.join(data_folder, "train")
-    # if not check_folders(train_folder):
-    #     download_mini_librispeech(data_folder)
-
     # List files and create manifest from list
     logger.info(
         f"Creating {save_json_train}, {save_json_valid}, and {save_json_test}"
     )
     extension = [".wav"]
-    wav_list = get_all_files(train_folder, match_and=extension)
+    wav_list = get_all_files(data_folder, match_and=extension)
 
     # Random split the signal list into train, valid, and test sets.
     data_split = split_sets(wav_list, split_ratio)
