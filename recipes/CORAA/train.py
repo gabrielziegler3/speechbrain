@@ -26,15 +26,19 @@ import speechbrain as sb
 import numpy as np
 
 from hyperpyyaml import load_hyperpyyaml
+from speechbrain.utils.parameter_transfer import Pretrainer
 from speechbrain.utils.distributed import run_on_main
 from coraa_prepare import prepare_coraa
 from sklearn.metrics import confusion_matrix
 from confusion_matrix_fig import create_cm_fig
+from custom_model import get_pretrained_model
 
 
 class SentimentBrain(sb.core.Brain):
     """Class for sound class embedding training"
     """
+    def _load_pretrained_model(self):
+        self.modules.embedding_model = get_pretrained_model(hparams["pretrain_path"])
 
     def compute_forward(self, batch, stage):
         """Computation pipeline based on a encoder + sound classifier.
@@ -402,6 +406,7 @@ if __name__ == "__main__":
         run_opts=run_opts,
         checkpointer=hparams["checkpointer"],
     )
+    sentiment_brain._load_pretrained_model()
 
     # The `fit()` method iterates the training loop, calling the methods
     # necessary to update the parameters of the model. Since all objects
