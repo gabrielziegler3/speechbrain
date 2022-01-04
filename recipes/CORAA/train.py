@@ -411,6 +411,7 @@ if __name__ == "__main__":
     # necessary to update the parameters of the model. Since all objects
     # with changing state are managed by the Checkpointer, training can be
     # stopped at any point, and will be resumed on next call.
+    print("Device used for training: ", sentiment_brain.device)
     sentiment_brain.fit(
         epoch_counter=sentiment_brain.hparams.epoch_counter,
         train_set=datasets["train"],
