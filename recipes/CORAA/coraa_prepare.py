@@ -16,9 +16,11 @@ import logging
 import torchaudio
 from speechbrain.utils.data_utils import get_all_files, download_file
 from speechbrain.dataio.dataio import read_audio
+from sklearn.model_selection import train_test_split
+from coraa_dataset import CORAADataset
+
 
 logger = logging.getLogger(__name__)
-MINILIBRI_TRAIN_URL = "http://www.openslr.org/resources/31/train-clean-5.tar.gz"
 SAMPLERATE = 16000
 
 
@@ -65,16 +67,17 @@ def prepare_coraa(
     logger.info(
         f"Creating {save_json_train}, {save_json_valid}, and {save_json_test}"
     )
-    extension = [".wav"]
-    wav_list = get_all_files(data_folder, match_and=extension)
+    # wav_list = get_all_files(data_folder, match_and=extension)
+    coraa_dataset = CORAADataset(data_folder, model_sr=SAMPLERATE)
 
     # Random split the signal list into train, valid, and test sets.
-    data_split = split_sets(wav_list, split_ratio)
+    train_split, val_split, test_split = split_sets(coraa_dataset.audio_files,
+                                                    coraa_dataset.labels)
 
     # Creating json files
-    create_json(data_split["train"], save_json_train)
-    create_json(data_split["valid"], save_json_valid)
-    create_json(data_split["test"], save_json_test)
+    create_json(train_split[0], save_json_train)
+    create_json(val_split[0], save_json_valid)
+    create_json(test_split[0], save_json_test)
 
 
 def create_json(wav_list, json_file):
@@ -145,41 +148,19 @@ def check_folders(*folders):
     return True
 
 
-def split_sets(wav_list, split_ratio):
-    """Randomly splits the wav list into training, validation, and test lists.
-    Note that a better approach is to make sure that all the classes have the
-    same proportion of samples (e.g, spk01 should have 80% of samples in
-    training, 10% validation, 10% test, the same for speaker2 etc.). This
-    is the approach followed in some recipes such as the Voxceleb one. For
-    simplicity, we here simply split the full list without necessarily respecting
-    the split ratio within each class.
+def split_sets(wav_list, labels_list, test_size=0.1, validation_size=0.1):
+    X_train, X_val, y_train, y_val = train_test_split(wav_list, labels_list,
+                                                      test_size=0.2, stratify=labels_list,
+                                                      random_state=42)
 
-    Arguments
-    ---------
-    wav_lst : list
-        list of all the signals in the dataset
-    split_ratio: list
-        List composed of three integers that sets split ratios for train, valid,
-        and test sets, respectively. For instance split_ratio=[80, 10, 10] will
-        assign 80% of the sentences to training, 10% for validation, and 10%
-        for test.
+    X_val, X_test, y_val, y_test = train_test_split(X_val, y_val, test_size=0.5,
+                                                    stratify=y_val, random_state=42)
 
-    Returns
-    ------
-    dictionary containing train, valid, and test splits.
-    """
-    # Random shuffle of the list
-    random.shuffle(wav_list)
-    tot_split = sum(split_ratio)
-    tot_snts = len(wav_list)
-    data_split = {}
-    splits = ["train", "valid"]
+    from collections import Counter
 
-    for i, split in enumerate(splits):
-        n_snts = int(tot_snts * split_ratio[i] / tot_split)
-        data_split[split] = wav_list[0:n_snts]
-        del wav_list[0:n_snts]
-    data_split["test"] = wav_list
+    logger.info(f"Train: {len(y_train)} {Counter(y_train)}")
+    logger.info(f"Val:   {len(y_val)}   {Counter(y_val)}")
+    logger.info(f"Test:  {len(y_test)}  {Counter(y_test)}")
 
-    return data_split
+    return (X_train, y_train), (X_val, y_val), (X_test, y_test)
 
