@@ -16,11 +16,11 @@ pretrain_path: ../../../pretrained_models/EncoderClassifier-4644456070306523722/
 # Set up folders for reading from and writing to
 # Dataset must already exist at `audio_data_folder`
 data_folder: ../../../data/train
-# open_rir_folder: <data_folder>/RIRS # Change if needed
+open_rir_folder: <data_folder>/RIRS # Change if needed
 # audio_data_folder: !ref <data_folder>/train
 # TODO the follwing folder will contain the resampled audio files (mono channel and config SR) to train on
 # reasmpled_audio_data_folder: !ref <data_folder>/audio_mono16kHz
-output_folder: !ref ./results/sentiment/<seed>
+output_folder: !ref ./results/cpu-pretrain-stratified-sampler2/<seed>
 save_folder: !ref <output_folder>/save
 train_log: !ref <output_folder>/train_log.txt
 
@@ -36,8 +36,8 @@ test_annotation: !ref test.json
 ckpt_interval_minutes: 15 # save checkpoint every N min
 
 # Training parameters
-number_of_epochs: 25
-batch_size: 8
+number_of_epochs: 30
+batch_size: 4
 lr: 0.001
 base_lr: 0.00000001
 max_lr: !ref <lr>
@@ -88,14 +88,13 @@ classifier: !new:speechbrain.lobes.models.ECAPA_TDNN.Classifier
 epoch_counter: !new:speechbrain.utils.epoch_loop.EpochCounter
     limit: !ref <number_of_epochs>
 
-augment_wavedrop: !new:speechbrain.lobes.augment.TimeDomainSpecAugment
-    sample_rate: !ref <sample_rate>
-    speeds: [100]
-
-augment_speed: !new:speechbrain.lobes.augment.TimeDomainSpecAugment
-    sample_rate: !ref <sample_rate>
-    speeds: [95, 100, 105]
-
+    # augment_wavedrop: !new:speechbrain.lobes.augment.TimeDomainSpecAugment
+    #     sample_rate: !ref <sample_rate>
+    #     speeds: [100]
+    #
+    # augment_speed: !new:speechbrain.lobes.augment.TimeDomainSpecAugment
+    #     sample_rate: !ref <sample_rate>
+    #     speeds: [95, 100, 105]
     # add_rev: !new:speechbrain.lobes.augment.EnvCorrupt
     #     openrir_folder: !ref <open_rir_folder>
     #     openrir_max_noise_len: 3.0  # seconds
@@ -123,18 +122,17 @@ augment_speed: !new:speechbrain.lobes.augment.TimeDomainSpecAugment
     #     noise_snr_high: 15
     #     rir_scale_factor: 1.0
 
-
 # Definition of the augmentation pipeline.
 # If concat_augment = False, the augmentation techniques are applied
 # in sequence. If concat_augment = True, all the augmented signals
 # # are concatenated in a single big batch.
 
 augment_pipeline: [
-    #!ref <augment_wavedrop>,
-    #!ref <augment_speed>,
-    #!ref <add_rev>,
-    #!ref <add_noise>,
-    #!ref <add_rev_noise>
+    #    !ref <augment_wavedrop>,
+    #    !ref <augment_speed>,
+    #    !ref <add_rev>,
+    #    !ref <add_noise>,
+    #    !ref <add_rev_noise>
 ]
 concat_augment: True
 
@@ -144,11 +142,11 @@ mean_var_norm: !new:speechbrain.processing.features.InputNormalization
 
 modules:
     compute_features: !ref <compute_features>
-    augment_wavedrop: !ref <augment_wavedrop>
-    augment_speed: !ref <augment_speed>
-    # add_rev: !ref <add_rev>
-    # add_noise: !ref <add_noise>
-    # add_rev_noise: !ref <add_rev_noise>
+    # augment_wavedrop: !ref <augment_wavedrop>
+    # augment_speed: !ref <augment_speed>
+    #     add_rev: !ref <add_rev>
+    #     add_noise: !ref <add_noise>
+    #     add_rev_noise: !ref <add_rev_noise>
     embedding_model: !ref <embedding_model>
     classifier: !ref <classifier>
     mean_var_norm: !ref <mean_var_norm>

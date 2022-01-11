@@ -384,9 +384,6 @@ if __name__ == "__main__":
             "save_json_train": hparams["train_annotation"],
             "save_json_valid": hparams["valid_annotation"],
             "save_json_test": hparams["test_annotation"],
-            # "train_fold_nums": hparams["train_fold_nums"],
-            # "valid_fold_nums": hparams["valid_fold_nums"],
-            # "test_fold_nums": hparams["test_fold_nums"],
             # "skip_manifest_creation": hparams["skip_manifest_creation"],
         },
     )
@@ -407,17 +404,71 @@ if __name__ == "__main__":
     )
     sentiment_brain._load_pretrained_model()
 
+
+    # Create smaller batch to overfit to debug model
+    # subset = range(0, 50)
+    # datasets["train"] = torch.utils.data.Subset(datasets["train"], subset)
+    # datasets["valid"] = torch.utils.data.Subset(datasets["valid"], subset)
+    # sys.exit()
+    # from speechbrain.dataio.batch import PaddedBatch
+    # hparams["dataloader_options"]["collate_fn"] = PaddedBatch
+
+    # datasets["valid"] = torch.utils.data.Subset(datasets["valid"], subset)
+    print("Train Size", len(datasets["train"]))
+
+    # NOTE Create custom weight sampler
+    # from torch.utils.data import WeightedRandomSampler
+    from speechbrain.dataio.sampler import ReproducibleWeightedRandomSampler
+    from collections import Counter
+
+    def get_class_weights(dataset):
+        labels = [sample["sentiment_encoded"].item() for sample in dataset]
+        classes_counts = sorted(Counter(labels).items())
+        classes_n_samples = torch.tensor([count[1] for count in classes_counts])
+        classes_weights = 1. / classes_n_samples
+        classes_weights = torch.tensor([classes_weights[t] for t in labels])
+        return classes_weights
+
+    train_class_weights = get_class_weights(datasets["train"])
+    # valid_class_weights = get_class_weights(datasets["valid"])
+
+    print("Len train class weights", len(train_class_weights))
+
+    print(train_class_weights)
+    print([i["sentiment_encoded"].item() for i in datasets["train"]])
+
+    train_sampler = ReproducibleWeightedRandomSampler(
+        weights=train_class_weights,
+        num_samples=len(train_class_weights),
+        replacement=True
+    )
+
+    #valid_sampler = ReproducibleWeightedRandomSampler(
+    #    weights=valid_class_weights,
+    #    num_samples=len(valid_class_weights),
+    #    replacement=True
+    #)
+
+    train_dataloader_options = hparams["dataloader_options"]
+    train_dataloader_options["sampler"] = train_sampler
+    sys.exit()
+
+    # valid_dataloader_options = hparams["dataloader_options"]
+    # valid_dataloader_options["sampler"] = valid_sampler
+
     # The `fit()` method iterates the training loop, calling the methods
     # necessary to update the parameters of the model. Since all objects
     # with changing state are managed by the Checkpointer, training can be
     # stopped at any point, and will be resumed on next call.
     print("Device used for training: ", sentiment_brain.device)
+    print("DEBUG", hparams["dataloader_options"])
     sentiment_brain.fit(
         epoch_counter=sentiment_brain.hparams.epoch_counter,
         train_set=datasets["train"],
         valid_set=datasets["valid"],
-        train_loader_kwargs=hparams["dataloader_options"],
+        train_loader_kwargs=train_dataloader_options,
         valid_loader_kwargs=hparams["dataloader_options"],
+        # progressbar=True,
     )
 
     # Load the best checkpoint for evaluation
