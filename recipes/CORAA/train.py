@@ -354,6 +354,8 @@ if __name__ == "__main__":
 
     # CLI:
     hparams_file, run_opts, overrides = sb.parse_arguments(sys.argv[1:])
+    # NOTE
+    run_opts["device"] = "cpu"
 
     # Initialize ddp (useful only for multi-GPU DDP training)
     sb.utils.distributed.ddp_init_group(run_opts)
@@ -405,7 +407,7 @@ if __name__ == "__main__":
     sentiment_brain._load_pretrained_model()
 
 
-    # Create smaller batch to overfit to debug model
+    # NOTE Create smaller batch to overfit to debug model
     # subset = range(0, 50)
     # datasets["train"] = torch.utils.data.Subset(datasets["train"], subset)
     # datasets["valid"] = torch.utils.data.Subset(datasets["valid"], subset)
@@ -413,12 +415,7 @@ if __name__ == "__main__":
     # from speechbrain.dataio.batch import PaddedBatch
     # hparams["dataloader_options"]["collate_fn"] = PaddedBatch
 
-    # datasets["valid"] = torch.utils.data.Subset(datasets["valid"], subset)
-    print("Train Size", len(datasets["train"]))
-
     # NOTE Create custom weight sampler
-    # from torch.utils.data import WeightedRandomSampler
-    from speechbrain.dataio.sampler import ReproducibleWeightedRandomSampler
     from collections import Counter
 
     def get_class_weights(dataset):
@@ -430,38 +427,32 @@ if __name__ == "__main__":
         return classes_weights
 
     train_class_weights = get_class_weights(datasets["train"])
-    # valid_class_weights = get_class_weights(datasets["valid"])
 
     print("Len train class weights", len(train_class_weights))
 
     print(train_class_weights)
     print([i["sentiment_encoded"].item() for i in datasets["train"]])
 
+    from speechbrain.dataio.sampler import ReproducibleWeightedRandomSampler
     train_sampler = ReproducibleWeightedRandomSampler(
         weights=train_class_weights,
         num_samples=len(train_class_weights),
         replacement=True
     )
 
-    #valid_sampler = ReproducibleWeightedRandomSampler(
-    #    weights=valid_class_weights,
-    #    num_samples=len(valid_class_weights),
-    #    replacement=True
-    #)
-
     train_dataloader_options = hparams["dataloader_options"]
     train_dataloader_options["sampler"] = train_sampler
-    sys.exit()
 
-    # valid_dataloader_options = hparams["dataloader_options"]
-    # valid_dataloader_options["sampler"] = valid_sampler
+    print("# Samples in train", len(datasets["train"]))
+    print("# Samples in validation", len(datasets["valid"]))
+    print("# Samples in test", len(datasets["test"]))
 
     # The `fit()` method iterates the training loop, calling the methods
     # necessary to update the parameters of the model. Since all objects
     # with changing state are managed by the Checkpointer, training can be
     # stopped at any point, and will be resumed on next call.
     print("Device used for training: ", sentiment_brain.device)
-    print("DEBUG", hparams["dataloader_options"])
+    # print("DEBUG", hparams["dataloader_options"])
     sentiment_brain.fit(
         epoch_counter=sentiment_brain.hparams.epoch_counter,
         train_set=datasets["train"],
